@@ -10,6 +10,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Microsoft.EntityFrameworkCore;
+using QuestionApi.Models;
 
 namespace QuestionApi
 {
@@ -25,6 +27,12 @@ namespace QuestionApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddDbContext<QuestionContext>(opt =>
+                opt.UseInMemoryDatabase("QuestionList"));
+            services.AddDbContext<AlternativeContext>(opt =>
+                opt.UseInMemoryDatabase("QuestionList"));
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllers();
         }
 
@@ -36,11 +44,11 @@ namespace QuestionApi
                 app.UseDeveloperExceptionPage();
             }
 
-            app.UseHttpsRedirection();
-
             app.UseRouting();
 
             app.UseAuthorization();
+
+            app.UseStaticFiles();
 
             app.UseEndpoints(endpoints =>
             {
