@@ -11,51 +11,48 @@ namespace QuestionApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class QuestionsController : ControllerBase
+    public class AlternativesController : ControllerBase
     {
-        private readonly QuestionContext _context;
+        private readonly AlternativeContext _context;
 
-        public QuestionsController(QuestionContext context)
+        public AlternativesController(AlternativeContext context)
         {
             _context = context;
         }
 
-        // GET: api/Questions
+        // GET: api/Alternatives
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Question>>> GetQuestions()
+        public async Task<ActionResult<IEnumerable<Alternative>>> GetAlternatives()
         {
-            return await _context.Questions
-                .Include(q => q.Alternatives)
-                .ToListAsync();
+            return await _context.Alternatives.ToListAsync();
         }
 
-        // GET: api/Questions/5
+        // GET: api/Alternatives/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<Question>> GetQuestion(long id)
+        public async Task<ActionResult<Alternative>> GetAlternative(long id)
         {
-            var question = await _context.Questions
-                .FindAsync(id);
+            var alternative = await _context.Alternatives.FindAsync(id);
 
-            if (question == null)
+            if (alternative == null)
             {
                 return NotFound();
             }
 
-            return question;
+            return alternative;
         }
 
-        // PUT: api/Questions/5
+        // PUT: api/Alternatives/5
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutQuestion(long id, Question question)
+        public async Task<IActionResult> PutAlternative(long id, Alternative alternative)
         {
-            if (id != question.Id)
+            if (id != alternative.Id)
             {
                 return BadRequest();
             }
 
-            _context.Entry(question).State = EntityState.Modified;
+            _context.Entry(alternative).State = EntityState.Modified;
 
             try
             {
@@ -63,7 +60,7 @@ namespace QuestionApi.Controllers
             }
             catch (DbUpdateConcurrencyException)
             {
-                if (!QuestionExists(id))
+                if (!AlternativeExists(id))
                 {
                     return NotFound();
                 }
@@ -76,37 +73,37 @@ namespace QuestionApi.Controllers
             return NoContent();
         }
 
-        // POST: api/Questions
+        // POST: api/Alternatives
         // To protect from overposting attacks, enable the specific properties you want to bind to, for
         // more details, see https://go.microsoft.com/fwlink/?linkid=2123754.
         [HttpPost]
-        public async Task<ActionResult<Question>> PostQuestion(Question question)
+        public async Task<ActionResult<Alternative>> PostAlternative(Alternative alternative)
         {
-            _context.Questions.Add(question);
+            _context.Alternatives.Add(alternative);
             await _context.SaveChangesAsync();
 
-            return CreatedAtAction("GetQuestion", new { id = question.Id }, question);
+            return CreatedAtAction("GetAlternative", new { id = alternative.Id }, alternative);
         }
 
-        // DELETE: api/Questions/5
+        // DELETE: api/Alternatives/5
         [HttpDelete("{id}")]
-        public async Task<ActionResult<Question>> DeleteQuestion(long id)
+        public async Task<ActionResult<Alternative>> DeleteAlternative(long id)
         {
-            var question = await _context.Questions.FindAsync(id);
-            if (question == null)
+            var alternative = await _context.Alternatives.FindAsync(id);
+            if (alternative == null)
             {
                 return NotFound();
             }
 
-            _context.Questions.Remove(question);
+            _context.Alternatives.Remove(alternative);
             await _context.SaveChangesAsync();
 
-            return question;
+            return alternative;
         }
 
-        private bool QuestionExists(long id)
+        private bool AlternativeExists(long id)
         {
-            return _context.Questions.Any(e => e.Id == id);
+            return _context.Alternatives.Any(e => e.Id == id);
         }
     }
 }
