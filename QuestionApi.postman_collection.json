@@ -1,0 +1,137 @@
+{
+	"info": {
+		"_postman_id": "8fb07124-b4e6-4513-82c8-ffbaba446541",
+		"name": "QuestionApi",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Question (mini)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This car brand is originally from which country?\",\n    \"imageUrl\": \"http://localhost:5000/images/mini-logo.png\",\n    \"alternatives\": [\n        { \"title\": \"England\", \"isCorrect\": true },\n        { \"title\": \"USA\", \"isCorrect\": false },\n        { \"title\": \"Germany\", \"isCorrect\": false },\n        { \"title\": \"Japan\", \"isCorrect\": false }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question (bmw)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This car brand is originally from which country?\",\n    \"imageUrl\": \"http://localhost:5000/images/bmw-logo.png\",\n    \"alternatives\": [\n        { \"title\": \"England\", \"isCorrect\": false },\n        { \"title\": \"USA\", \"isCorrect\": false },\n        { \"title\": \"Germany\", \"isCorrect\": true },\n        { \"title\": \"Japan\", \"isCorrect\": false }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question (gm)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This car brand is originally from which country?\",\n    \"imageUrl\": \"http://localhost:5000/images/general-motors-logo.png\",\n    \"alternatives\": [\n        { \"title\": \"England\", \"isCorrect\": false },\n        { \"title\": \"USA\", \"isCorrect\": true },\n        { \"title\": \"Germany\", \"isCorrect\": false },\n        { \"title\": \"Japan\", \"isCorrect\": false }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Question (toyota)",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"title\": \"This car brand is originally from which country?\",\n    \"imageUrl\": \"http://localhost:5000/images/general-motors-logo.png\",\n    \"alternatives\": [\n        { \"title\": \"England\", \"isCorrect\": false },\n        { \"title\": \"USA\", \"isCorrect\": false },\n        { \"title\": \"Germany\", \"isCorrect\": false },\n        { \"title\": \"Japan\", \"isCorrect\": true }\n    ]\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:5000/api/questions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "5000",
+					"path": [
+						"api",
+						"questions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Questions",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": ""
+				}
+			},
+			"response": []
+		}
+	],
+	"protocolProfileBehavior": {}
+}
