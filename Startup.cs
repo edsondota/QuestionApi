@@ -31,6 +31,8 @@ namespace QuestionApi
                 opt.UseInMemoryDatabase("QuestionList"));
             services.AddDbContext<AlternativeContext>(opt =>
                 opt.UseInMemoryDatabase("QuestionList"));
+            services.AddControllers().AddNewtonsoftJson(options =>
+                options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddControllers();
         }
 
@@ -41,8 +43,6 @@ namespace QuestionApi
             {
                 app.UseDeveloperExceptionPage();
             }
-
-            app.UseHttpsRedirection();
 
             app.UseRouting();
 
